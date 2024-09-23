@@ -15,7 +15,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static UXmlAttributeWrapper* Create(const FString& InTag, const FString& InValue);
     static UXmlAttributeWrapper* CreateFromExternalPtr(FXmlAttribute* NativeAttribute);
-    void BeginDestroy() override;
+    virtual void BeginDestroy() override;
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
     const FString& GetTag() const;

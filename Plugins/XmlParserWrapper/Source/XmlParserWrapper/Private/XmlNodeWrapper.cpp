@@ -10,6 +10,9 @@ UXmlAttributeWrapper* UXmlAttributeWrapper::Create(const FString& InTag, const F
 
 UXmlAttributeWrapper* UXmlAttributeWrapper::CreateFromExternalPtr(FXmlAttribute* NativeAttribute)
 {
+    if(NativeAttribute == nullptr)
+        return nullptr;
+
     auto Inst = NewObject<UXmlAttributeWrapper>();
     Inst->AttributePtr = NativeAttribute;
     Inst->bIsExternal = true;
@@ -41,6 +44,9 @@ const FString& UXmlAttributeWrapper::GetValue() const
 
 UXmlNodeWrapper* UXmlNodeWrapper::CreateFromExternalPtr(FXmlNode* NativeNode)
 {
+    if(NativeNode == nullptr)
+        return nullptr;
+
     auto Inst = NewObject<UXmlNodeWrapper>();
     Inst->NodePtr = NativeNode;
     return Inst;
