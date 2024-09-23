@@ -83,6 +83,30 @@ UXmlNodeWrapper* UXmlNodeWrapper::GetFirstChildNode()
     return CreateFromExternalPtr(Node);
 }
 
+UXmlNodeWrapper* UXmlNodeWrapper::GetLastChildNode()
+{
+    auto Node = const_cast<FXmlNode*>(NodePtr->GetFirstChildNode());
+    while (Node->GetNextNode() != nullptr)
+    {
+        Node = const_cast<FXmlNode*>(Node->GetNextNode());
+    }
+
+    return CreateFromExternalPtr(Node);
+}
+
+int UXmlNodeWrapper::GetChildrenCount()
+{
+    return NodePtr->GetChildrenNodes().Num();
+}
+
+UXmlNodeWrapper* UXmlNodeWrapper::GetChildNodeAt(int Idx)
+{
+    if(Idx<0 || Idx>=GetChildrenCount())
+        return nullptr;
+
+    return CreateFromExternalPtr(NodePtr->GetChildrenNodes()[Idx]);
+}
+
 UXmlNodeWrapper* UXmlNodeWrapper::FindChildNode(const FString& InTag)
 {
     return CreateFromExternalPtr(NodePtr->FindChildNode(InTag));

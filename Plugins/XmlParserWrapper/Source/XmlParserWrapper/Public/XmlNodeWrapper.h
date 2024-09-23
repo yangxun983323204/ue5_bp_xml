@@ -47,6 +47,15 @@ public:
     UXmlNodeWrapper* GetFirstChildNode();
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    UXmlNodeWrapper* GetLastChildNode();
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int GetChildrenCount();
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UXmlNodeWrapper* GetChildNodeAt(int Idx);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UXmlNodeWrapper* FindChildNode(const FString& InTag);
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
